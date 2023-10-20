@@ -133,6 +133,8 @@ public class NflProjectApplication {
 			trepository.save(team30);
 			trepository.save(team31);
 			trepository.save(team32);
+			
+			System.out.println("nflDemo method is executed!");
 		};
 	}
 

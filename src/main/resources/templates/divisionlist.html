@@ -6,23 +6,22 @@
 </head>
 
 <body>
-	<h1>Teams</h1>
+	<h1>Divisions</h1>
 	
 	<a href="/homepage">Homepage</a>
 	
-	<a href="/divisionlist">Divisions</a>
-	
 	<a href="/conferencelist">Conferences</a>
+	
+	<a href="/teamlist">All teams</a>
 	
 	<table>
 		<tr>
-			<th><h3>Team name</h3></th>
-			<th><h3>City</h3></th>
+			<th><h3>Division</h3></th>
 		</tr>
 		
-		<tr th:each="team : ${teams}">
-			<td th:text="${team.name}"></td>
-			<td th:text="${team.city}"></td>
+		<tr th:each="division : ${divisions}">
+			<td th:text="${division.conference.name}"></td>
+			<td th:text="${division.name}"></td>
 		</tr>
 	</table>
 </body>

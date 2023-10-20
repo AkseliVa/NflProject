@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Conferences</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Conferences</h1>
+	
+	<a href="/homepage">Homepage</a>
+	
+	<a href="/divisionlist">All divisions</a>
+	
+	<a href="/teamlist">All teams</a>
+	
+	<table>
+		<tr th:each="conference : ${conferences}">
+			<td th:text="${conference.name}"></td>
+		</tr>
+	</table>
+</body>
