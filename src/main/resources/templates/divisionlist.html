@@ -14,14 +14,17 @@
 	
 	<a href="/teamlist">All teams</a>
 	
-	<table>
-		<tr>
-			<th><h3>Division</h3></th>
-		</tr>
-		
+	<div th:each="division : ${divisions}">
+		<h3 th:text="${division.conference.name}"></h3>
+		<ul>
+			<li th:text="${division.name}"></li>
+		</ul>
+	</div>
+	
+	<!-- <table>
 		<tr th:each="division : ${divisions}">
 			<td th:text="${division.conference.name}"></td>
 			<td th:text="${division.name}"></td>
 		</tr>
-	</table>
+	</table> -->
 </body>

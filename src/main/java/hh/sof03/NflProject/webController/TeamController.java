@@ -25,4 +25,13 @@ public class TeamController {
 		
 		return "teamlist";
 	}
+	
+	@GetMapping("/games")
+	public String getTeam(Model model) {
+		List<Team> teams = (List<Team>) trepository.findAll();
+		
+		model.addAttribute("teams", teams);
+		
+		return "games";
+	}
 }

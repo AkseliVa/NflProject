@@ -52,40 +52,40 @@ public class NflProjectApplication {
 			
 			
 			
-			Team team1 = new Team("Bills", "Buffalo", afceast);
-			Team team2 = new Team("Dolphins", "Miami", afceast);
-			Team team3 = new Team("Patriots", "New England", afceast);
-			Team team4 = new Team("Jets", "New York", afceast);
+			Team team1 = new Team("Bills", "Buffalo", afceast, 4, 3);
+			Team team2 = new Team("Dolphins", "Miami", afceast, 5, 2);
+			Team team3 = new Team("Patriots", "New England", afceast, 2, 5);
+			Team team4 = new Team("Jets", "New York", afceast, 3, 3);
 			
 			trepository.save(team1);
 			trepository.save(team2);
 			trepository.save(team3);
 			trepository.save(team4);
 			
-			Team team5 = new Team("Ravens", "Baltimore", afcnorth);
-			Team team6 = new Team("Bengals", "Cincinnati", afcnorth);
-			Team team7 = new Team("Browns", "Cleveland", afcnorth);
-			Team team8 = new Team("Steelers", "Pittsburgh", afcnorth);
+			Team team5 = new Team("Ravens", "Baltimore", afcnorth, 5, 2);
+			Team team6 = new Team("Bengals", "Cincinnati", afcnorth, 4, 2);
+			Team team7 = new Team("Browns", "Cleveland", afcnorth, 4, 2);
+			Team team8 = new Team("Steelers", "Pittsburgh", afcnorth, 3, 3);
 			
 			trepository.save(team5);
 			trepository.save(team6);
 			trepository.save(team7);
 			trepository.save(team8);
 			
-			Team team9 = new Team("Texans", "Houston", afcsouth);
-			Team team10 = new Team("Colts", "Indianapolis", afcsouth);
-			Team team11 = new Team("Jaguars", "Jacksonville", afcsouth);
-			Team team12 = new Team("Titans", "Tennesee", afcsouth);
+			Team team9 = new Team("Texans", "Houston", afcsouth, 3, 3);
+			Team team10 = new Team("Colts", "Indianapolis", afcsouth, 3, 4);
+			Team team11 = new Team("Jaguars", "Jacksonville", afcsouth, 5, 2);
+			Team team12 = new Team("Titans", "Tennesee", afcsouth, 2, 4);
 			
 			trepository.save(team9);
 			trepository.save(team10);
 			trepository.save(team11);
 			trepository.save(team12);
 			
-			Team team13 = new Team("Broncos", "Denver", afcwest);
-			Team team14 = new Team("Chiefs", "Kansas City", afcwest);
-			Team team15 = new Team("Raiders", "Las Vegas", afcwest);
-			Team team16 = new Team("Chargers", "Los Angeles", afcwest);
+			Team team13 = new Team("Broncos", "Denver", afcwest, 2, 5);
+			Team team14 = new Team("Chiefs", "Kansas City", afcwest, 6, 1);
+			Team team15 = new Team("Raiders", "Las Vegas", afcwest, 3, 4);
+			Team team16 = new Team("Chargers", "Los Angeles", afcwest, 2, 4);
 			
 			trepository.save(team13);
 			trepository.save(team14);
@@ -94,40 +94,40 @@ public class NflProjectApplication {
 			
 			
 			
-			Team team17 = new Team("Cowboys", "Dallas", nfceast);
-			Team team18 = new Team("Giants", "New York", nfceast);
-			Team team19 = new Team("Eagles", "Philadelphia", nfceast);
-			Team team20 = new Team("Commanders", "Washington", nfceast);
+			Team team17 = new Team("Cowboys", "Dallas", nfceast, 4, 2);
+			Team team18 = new Team("Giants", "New York", nfceast, 2, 5);
+			Team team19 = new Team("Eagles", "Philadelphia", nfceast, 6, 1);
+			Team team20 = new Team("Commanders", "Washington", nfceast, 3, 4);
 			
 			trepository.save(team17);
 			trepository.save(team18);
 			trepository.save(team19);
 			trepository.save(team20);
 			
-			Team team21 = new Team("Bears", "Chicago", nfcnorth);
-			Team team22 = new Team("Lions", "Detroit", nfcnorth);
-			Team team23 = new Team("Packers", "Green Bay", nfcnorth);
-			Team team24 = new Team("Vikings", "Minnesota", nfcnorth);
+			Team team21 = new Team("Bears", "Chicago", nfcnorth, 2, 5);
+			Team team22 = new Team("Lions", "Detroit", nfcnorth, 5, 2);
+			Team team23 = new Team("Packers", "Green Bay", nfcnorth, 2, 4);
+			Team team24 = new Team("Vikings", "Minnesota", nfcnorth, 2, 4);
 			
 			trepository.save(team21);
 			trepository.save(team22);
 			trepository.save(team23);
 			trepository.save(team24);
 			
-			Team team25 = new Team("Falcons", "Atlanta", nfcsouth);
-			Team team26 = new Team("Panthers", "Carolina", nfcsouth);
-			Team team27 = new Team("Saints", "New Orleans", nfcsouth);
-			Team team28 = new Team("Buccaneers", "Tampa Bay", nfcsouth);
+			Team team25 = new Team("Falcons", "Atlanta", nfcsouth, 4, 3);
+			Team team26 = new Team("Panthers", "Carolina", nfcsouth, 0, 6);
+			Team team27 = new Team("Saints", "New Orleans", nfcsouth, 3, 4);
+			Team team28 = new Team("Buccaneers", "Tampa Bay", nfcsouth, 3, 3);
 			
 			trepository.save(team25);
 			trepository.save(team26);
 			trepository.save(team27);
 			trepository.save(team28);
 			
-			Team team29 = new Team("Cardinals", "Arizona", nfcwest);
-			Team team30 = new Team("Rams", "Los Angeles", nfcwest);
-			Team team31 = new Team("49ers", "San Francisco", nfcwest);
-			Team team32 = new Team("Seahawks", "Seattle", nfcwest);
+			Team team29 = new Team("Cardinals", "Arizona", nfcwest, 1, 6);
+			Team team30 = new Team("Rams", "Los Angeles", nfcwest, 3, 4);
+			Team team31 = new Team("49ers", "San Francisco", nfcwest, 5, 1);
+			Team team32 = new Team("Seahawks", "Seattle", nfcwest, 4, 2);
 			
 			trepository.save(team29);
 			trepository.save(team30);

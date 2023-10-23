@@ -19,6 +19,9 @@ public class Team {
 	private String name;
 	private String city;
 	
+	private Integer wins;
+	private Integer losses;
+	
 	@ManyToOne
 	@JsonIgnoreProperties ("teams")
 	@JoinColumn(name="divisionid")
@@ -55,12 +58,31 @@ public class Team {
 	public void setDivision(Division division) {
 		this.division = division;
 	}
+	
 
-	public Team(String name, String city, Division division) {
+	public Integer getWins() {
+		return wins;
+	}
+
+	public void setWins(Integer wins) {
+		this.wins = wins;
+	}
+
+	public Integer getLosses() {
+		return losses;
+	}
+
+	public void setLosses(Integer losses) {
+		this.losses = losses;
+	}
+
+	public Team(String name, String city, Division division, Integer wins, Integer losses) {
 		super();
 		this.name = name;
 		this.city = city;
 		this.division = division;
+		this.wins = wins;
+		this.losses = losses;
 	}
 
 	public Team() {

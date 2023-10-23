@@ -8,9 +8,18 @@
 <body>
 	<h1>NFL</h1>
 	
-	<a href="/conferencelist">Conferences</a>
+	<a href="/conferencelist">Conferences</a>	
+	<a href="/divisionlist">Divisions</a>	
+	<a href="/teamlist">All teams</a>
 	
-	<a href="/divisionlist">Divisions</a>
+	<div th:each="conference : ${conferences}">
+		<h3 th:text="${conference.name}"></h3>
 	
-	<a href="/teamlist" class="button">Teams</a>
+		<ul th:each="division : ${conference.divisions}" >
+			<li th:text="${division.name}"></li>
+				<ul th:each="team : ${division.teams}">
+					<a href="/games"><li th:text="${team.name}"></li></a>
+				</ul>
+		</ul>
+	</div>
 </body>
