@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.sof03.NflProject.domain.DivisionRepository;
 import hh.sof03.NflProject.domain.Team;
@@ -17,6 +19,9 @@ public class TeamController {
 	@Autowired
 	TeamRepository trepository;
 	
+	@Autowired
+	DivisionRepository drepository;
+	
 	@GetMapping("/teamlist")
 	public String getTeams(Model model) {
 		List<Team> teams = (List<Team>) trepository.findAll();
@@ -26,12 +31,22 @@ public class TeamController {
 		return "teamlist";
 	}
 	
-	@GetMapping("/games")
-	public String getTeam(Model model) {
-		List<Team> teams = (List<Team>) trepository.findAll();
-		
-		model.addAttribute("teams", teams);
-		
-		return "games";
+	@GetMapping("/edit/{teamid}")
+	public String editTeam(@PathVariable("teamid") Long teamId, Model model) {
+		model.addAttribute("team", trepository.findById(teamId));
+		model.addAttribute("divisions", drepository.findAll());
+		return "editteam";
+	}
+	
+	@PostMapping("/save")
+	public String save(Team team) {
+		trepository.save(team);
+		return "redirect:/homepage";
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String deleteBook(@PathVariable("id") Long teamid, Model model) {
+		trepository.deleteById(teamid);
+		return "redirect:/homepage";
 	}
 }

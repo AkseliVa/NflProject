@@ -18,8 +18,16 @@
 		<ul th:each="division : ${conference.divisions}" >
 			<li th:text="${division.name}"></li>
 				<ul th:each="team : ${division.teams}">
-					<a href="/games"><li th:text="${team.name}"></li></a>
-				</ul>
+                <li>
+                    <span th:text="${team.name + ': ' + team.wins + '-' + team.losses}"></span>
+                    <form th:action="@{/edit/{id}(id=${team.teamid})}" method="get" style="display: inline;">
+                        <input type="submit" value="Edit">
+                    </form>
+                    <form th:action="@{/delete/{id}(id=${team.teamid})}" method="post" style="display: inline;">
+                        <input type="submit" value="Delete">
+                    </form>
+                </li>
+            </ul>
 		</ul>
 	</div>
 </body>

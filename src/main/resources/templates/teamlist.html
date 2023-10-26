@@ -18,11 +18,13 @@
 		<tr>
 			<th><h3>Team name</h3></th>
 			<th><h3>City</h3></th>
+			<th><h3>Division</h3></th>
 		</tr>
 		
 		<tr th:each="team : ${teams}">
 			<td th:text="${team.name}"></td>
 			<td th:text="${team.city}"></td>
+			<td th:text="${team.division.conference.name + ' ' + team.division.name}"></td>
 		</tr>
 	</table>
 </body>

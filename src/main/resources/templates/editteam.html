@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Team</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>Edit Team</h2>
+	
+	<form th:object="${team}" th:action="@{/save}" action="#" method="post">
+		<input type="hidden" th:field="*{teamid}" class="form-control" />
+		<input type="text" id="name" th:field="*{name}" />
+		
+		<br />
+		<br />
+	
+		<input type="text" id="city" th:field="*{city}" />
+		
+		<br />
+		<br />
+		
+		<input type="text" id="wins" th:field="*{wins}" />
+		
+		<br />
+		<br />
+		
+		<input type="text" id="losses" th:field="*{losses}" />
+		
+		<br />
+		<br />
+		
+		<select id="divlist" th:field="*{division}" class="form-control">
+       		<option th:each="division: ${divisions}" th:value="${division.divisionid}" th:text="${division.name}"></option>
+    	</select>
+			
+		<br />
+		<br />
+			
+		<input type="submit" class="btn btn-primary" value="Save"></input>
+	</form>	
+	<button><a href="/homepage" class="btn btn-success">Back</a></button>
+</body>
+</html>
