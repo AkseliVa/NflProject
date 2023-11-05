@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import hh.sof03.NflProject.domain.Conference;
 import hh.sof03.NflProject.domain.ConferenceRepository;
@@ -43,6 +44,13 @@ public class HomepageController {
 		
 		model.addAttribute("conferences", conferences);
 			
+		return "homepage";
+	}
+	
+	@GetMapping("/findTeam")
+	public String findTeam(@RequestParam("name") String teamName, Model model) {
+		List<Team> searchedTeam = trepository.getTeamByName(teamName);
+		model.addAttribute("searchedTeams", searchedTeam);
 		return "homepage";
 	}
 }

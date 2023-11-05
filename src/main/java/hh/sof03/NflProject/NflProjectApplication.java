@@ -5,12 +5,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import hh.sof03.NflProject.domain.User;
 import hh.sof03.NflProject.domain.Conference;
 import hh.sof03.NflProject.domain.ConferenceRepository;
 import hh.sof03.NflProject.domain.Division;
 import hh.sof03.NflProject.domain.DivisionRepository;
 import hh.sof03.NflProject.domain.Team;
 import hh.sof03.NflProject.domain.TeamRepository;
+import hh.sof03.NflProject.domain.UserRepository;
 
 @SpringBootApplication
 public class NflProjectApplication {
@@ -20,7 +22,7 @@ public class NflProjectApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner nflDemo(ConferenceRepository crepository, DivisionRepository drepository, TeamRepository trepository) {
+	public CommandLineRunner nflDemo(ConferenceRepository crepository, DivisionRepository drepository, TeamRepository trepository, UserRepository urepository) {
 		return (args) -> {
 			Conference afc = new Conference("AFC");
 			Conference nfc = new Conference("NFC");
@@ -133,6 +135,12 @@ public class NflProjectApplication {
 			trepository.save(team30);
 			trepository.save(team31);
 			trepository.save(team32);
+			
+			
+			User user1 = new User("user", "$2a$10$zVhl5zIp0NtwOBlQxsP9OOb4z3f4VrkdMlpE9Wo.65M34Pgx8tvu.", "USER");
+			User user2 = new User("admin", "$2a$10$i2LZ6rC20LOYzuurXbYBTe.HCwJiQDeFKd2dQNXFxdzmfgBNJxno.", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
 			
 			System.out.println("nflDemo method is executed!");
 		};

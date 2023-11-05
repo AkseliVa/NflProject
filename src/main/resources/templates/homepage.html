@@ -1,33 +1,80 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
-<title>NFL</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>NFL</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#searchForm").submit(function (event) {
+				event.preventDefault();
+				var teamName = $("#teamName").val();
+				$.get("/findTeam?name=" + teamName, function (data) {
+					$("#searchedTeams").html(data);
+				});
+			});
+		});
+	</script>
 </head>
 
 <body>
-	<h1>NFL</h1>
-	
-	<a href="/conferencelist">Conferences</a>	
-	<a href="/divisionlist">Divisions</a>	
-	<a href="/teamlist">All teams</a>
-	
-	<div th:each="conference : ${conferences}">
-		<h3 th:text="${conference.name}"></h3>
-	
-		<ul th:each="division : ${conference.divisions}" >
-			<li th:text="${division.name}"></li>
-				<ul th:each="team : ${division.teams}">
-                <li>
-                    <span th:text="${team.name + ': ' + team.wins + '-' + team.losses}"></span>
-                    <form th:action="@{/edit/{id}(id=${team.teamid})}" method="get" style="display: inline;">
-                        <input type="submit" value="Edit">
-                    </form>
-                    <form th:action="@{/delete/{id}(id=${team.teamid})}" method="post" style="display: inline;">
-                        <input type="submit" value="Delete">
-                    </form>
-                </li>
-            </ul>
-		</ul>
+	<div id="searchedTeams">
+		<h1>NFL</h1>
+		
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign out" />
+		</form>
+		
+		<br/>
+		<br/>
+
+		<a href="/teamlist">All teams</a>
+		
+		<br/>
+		<br/>
+		
+		<a href="/add">Add team</a>
+
+		<div id="searchForm">
+			<form id="searchForm">
+				<input type="text" id="teamName" name="teamName" placeholder="Enter team name">
+				<input type="submit" value="Search">
+			</form>
+		</div>
+
+		<div th:each="team : ${searchedTeams}">
+			<span th:text="${team.city + ' ' + team.name + ': ' + team.wins + '-' + team.losses}"></span>
+			<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/edit/{id}(id=${team.teamid})}" method="get"
+				style="display: inline;">
+				<input type="submit" value="Edit">
+			</form>
+			<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/delete/{id}(id=${team.teamid})}" method="post"
+				style="display: inline;">
+				<input type="submit" value="Delete">
+			</form>
+		</div>
 	</div>
+
+	<div id="teamlist">
+		<div th:each="conference : ${conferences}">
+			<h3 th:text="${conference.name}"></h3>
+
+			<ul th:each="division : ${conference.divisions}">
+				<li th:text="${division.name}"></li>
+				<ul th:each="team : ${division.teams}">
+					<li>
+						<span th:text="${team.name + ': ' + team.wins + '-' + team.losses}"></span>
+						<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/edit/{id}(id=${team.teamid})}"
+							method="get" style="display: inline;">
+							<input type="submit" value="Edit">
+						</form>
+						<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/delete/{id}(id=${team.teamid})}"
+							method="post" style="display: inline;">
+							<input type="submit" value="Delete">
+						</form>
+					</li>
+				</ul>
+			</ul>
+		</div>
 </body>
