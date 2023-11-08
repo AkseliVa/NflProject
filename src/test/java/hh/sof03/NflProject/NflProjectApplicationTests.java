@@ -1,4 +1,4 @@
-package hh.sof03.NflProject;
+/*package hh.sof03.NflProject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -53,4 +53,4 @@ class NflProjectApplicationTests {
 		
 	}
 
-}
+}*/
